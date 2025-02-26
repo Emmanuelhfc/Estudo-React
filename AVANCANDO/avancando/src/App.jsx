@@ -11,6 +11,7 @@ import Container from "./components/Container";
 import ExecuteFunction from "./components/ExecuteFunction";
 import Message from "./components/Message";
 import ChangeMessage from "./components/ChangeMessage";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   const [userName, setName] = useState("João");
@@ -21,6 +22,13 @@ function App() {
     { id: 3, brand: "C", km: 3000, value: 10000, newCar: false },
     { id: 4, brand: "D", km: 3000, value: 10000, newCar: false },
     { id: 5, brand: "E", km: 3000, value: 10000, newCar: false },
+  ];
+
+  const people = [
+    { id: 1, age: 18, name: "Marcos", job: "Engenheiro Mecânio" },
+    { id: 2, age: 17, name: "Antonio", job: "Médico" },
+    { id: 3, age: 23, name: "Maria", job: "Enfermeira" },
+    { id: 4, age: 16, name: "Anna", job: "Engenheiro Civil" },
   ];
 
   function showMessage() {
@@ -75,6 +83,10 @@ function App() {
       {/* State lift */}
       <Message msg={message} />
       <ChangeMessage handleMsg={handleMessage} />
+
+      {people.map((user) =>
+        user.age >= 18 ? <UserDetails key={user.id} user={user} /> : null
+      )}
     </>
   );
 }
